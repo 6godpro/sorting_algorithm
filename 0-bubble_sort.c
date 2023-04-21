@@ -1,5 +1,5 @@
 #include "sort.h"
-
+#include <stdbool.h>
 
 /**
  * bubble_sort - Sorts an array of integers in ascending order using the
@@ -9,13 +9,15 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, pos = size, tmp;
+	size_t i, tmp;
+	bool swap = true;
 
 	if (array == NULL || size < 2)
 		return;
 
-	while (pos > 1)
+	while (swap == true)
 	{
+		swap = false;
 		for (i = 1; i < size; i++)
 		{
 			if (array[i - 1] > array[i])
@@ -24,7 +26,7 @@ void bubble_sort(int *array, size_t size)
 				array[i - 1] = array[i];
 				array[i] = tmp;
 				print_array(array, size);
-				pos = i;
+				swap = true;
 			}
 		}
 	}
