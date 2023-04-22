@@ -25,13 +25,13 @@ void swap_values(int *x, int *y)
  */
 void shell_sort(int *array, size_t size)
 {
-	int i, j = 0, n = size, gap;
+	int i, j, n = size, gap;
 	bool swap;
 
 	if (array == NULL || size < 2)
 		return;
 
-	for (gap = 1; gap < n; gap = gap * 3 + 1)
+	for (gap = 1; gap < (n / 3); gap = gap * 3 + 1)
 		;
 
 	for (; gap >= 1; gap /= 3)
