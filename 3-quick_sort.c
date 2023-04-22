@@ -58,7 +58,7 @@ void lomuto_sort(int *array, int size, int l, int r)
 {
 	int idx;
 
-	if (l >= r)
+	if (l >= r || l < 0)
 		return;
 
 	idx = lomuto_partition(array, size, l, r);
