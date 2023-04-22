@@ -44,11 +44,8 @@ void shell_sort(int *array, size_t size)
 				if (array[i] < array[i + gap])
 					break;
 				swap_values(&array[i], &array[i + gap]);
-				swap = true;
 			}
 		}
-		if (swap == true)
-			print_array(array, size);
-
+		print_array(array, size);
 	}
 }
