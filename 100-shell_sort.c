@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdbool.h>
 #include <stdio.h>
 
 
@@ -26,7 +25,6 @@ void swap_values(int *x, int *y)
 void shell_sort(int *array, size_t size)
 {
 	int i, j, n = size, gap;
-	bool swap;
 
 	if (array == NULL || size < 2)
 		return;
@@ -36,7 +34,6 @@ void shell_sort(int *array, size_t size)
 
 	for (; gap >= 1; gap /= 3)
 	{
-		swap = false;
 		for (j = gap; j < n; j++)
 		{
 			for (i = j - gap; i >= 0; i -= gap)
