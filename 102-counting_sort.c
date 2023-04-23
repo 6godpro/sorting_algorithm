@@ -1,5 +1,23 @@
 #include "sort.h"
+#include <stdio.h>
 
+/**
+ * get_key - Returns the max value from an array.
+ * @array: The array to return its maximum value.
+ * @size: The size of the array.
+ * Return: The maximum value.
+ */
+int get_key(int *array, int size)
+{
+	int key, i = 0;
+
+	key = array[i];
+	for (i = 1; i < size; i++)
+		if (array[i] > key)
+			key = array[i];
+
+	return (key);
+}
 
 /**
  * counting_sort - Sorts an array of integers in ascending order
@@ -14,12 +32,7 @@ void counting_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	key = array[i];
-	do {
-		if (array[i++] > key)
-			key = array[i];
-	} while (i < (int)size);
-
+	key = get_key(array, size);
 	count = malloc(sizeof(int) * (key + 1));
 	if (count == NULL)
 		return;
@@ -27,11 +40,11 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i <= key; i++)
 		count[i] = 0;
 
-	/* populate count with the frequency of occurence input array values. */
+	/* Populate count with the frequency of occurence input array values. */
 	for (i = 0; i <= (int)size - 1; i++)
 		count[array[i]]++;
 
-	for (i = 1; i <= key; i++)
+	for (i = 0; i <= key; i++)
 		count[i] += count[i - 1];
 
 	sorted_array = malloc(sizeof(int) * size);
