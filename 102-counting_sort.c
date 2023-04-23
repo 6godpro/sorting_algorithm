@@ -20,9 +20,12 @@ void counting_sort(int *array, size_t size)
 			key = array[i];
 	} while (i < (int)size);
 
-	count = calloc(sizeof(int), (key + 1));
+	count = malloc(sizeof(int) * (key + 1));
 	if (count == NULL)
 		return;
+
+	for (i = 0; i <= key; i++)
+		count[i] = 0;
 
 	/* populate count with the frequency of occurence input array values. */
 	for (i = 0; i <= (int)size - 1; i++)
@@ -31,9 +34,12 @@ void counting_sort(int *array, size_t size)
 	for (i = 1; i <= key; i++)
 		count[i] += count[i - 1];
 
-	sorted_array = calloc(sizeof(int), size);
+	sorted_array = malloc(sizeof(int) * size);
 	if (sorted_array == NULL)
+	{
+		free(count);
 		return;
+	}
 
 	print_array(count, key + 1);
 	/* Starting from the end to maintain stability. */
