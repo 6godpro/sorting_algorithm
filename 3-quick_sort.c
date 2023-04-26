@@ -36,6 +36,7 @@ int lomuto_partition(int *array, int size, int l, int r)
 		{
 			curr--;
 			swap_values(&array[i], &array[curr]);
+			print_array(array, size);
 		}
 	}
 	swap_values(&array[r], &array[curr]);

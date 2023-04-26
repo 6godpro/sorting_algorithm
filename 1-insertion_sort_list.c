@@ -8,12 +8,12 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *behind, *forward = (*list)->next;
+	listint_t *behind, *forward;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (; forward != NULL; forward = forward->next)
+	for (forward = (*list)->next; forward != NULL; forward = forward->next)
 	{
 		behind = forward->prev;
 		for (; behind && forward->n < behind->n; behind = forward->prev)
